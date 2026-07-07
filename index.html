@@ -3,92 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QCM C par Mathar — Entraînement</title>
+<title>QCM Programmation C — Entraînement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #1B2A4A;
-    --accent: #2E5C8A;
-    --accent-light: #E8F0F8;
-    --green: #1E8E5A;
-    --red: #C0392B;
+    --navy: #10192E;
+    --navy-2: #1B2A4A;
+    --accent: #4A6CF7;
+    --accent-2: #7C5CFC;
+    --accent-light: #EEF2FF;
+    --accent-soft: #F5F3FF;
+    --green: #16A34A;
+    --green-light: #ECFDF3;
+    --red: #E11D48;
+    --red-light: #FEF1F3;
+    --amber: #B7791F;
+    --amber-light: #FFF8E8;
     --grey: #6B7280;
-    --bg: #F4F6F9;
+    --grey-soft: #9CA3AF;
+    --bg: #F3F5FB;
     --card: #FFFFFF;
-    --border: #E2E6EC;
+    --border: #E7E9F3;
+    --shadow-sm: 0 1px 2px rgba(16,25,46,0.04), 0 1px 1px rgba(16,25,46,0.03);
+    --shadow-md: 0 8px 24px rgba(16,25,46,0.08), 0 2px 6px rgba(16,25,46,0.04);
+    --shadow-lg: 0 20px 48px rgba(16,25,46,0.14), 0 6px 16px rgba(16,25,46,0.06);
+    --radius: 18px;
+    --radius-sm: 12px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
+
   * { box-sizing: border-box; }
+
+  ::selection { background: var(--accent); color: white; }
+
+  html { scroll-behavior: smooth; }
+
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: #1a1a1a;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:
+      radial-gradient(circle at 12% -10%, rgba(124,92,252,0.10), transparent 45%),
+      radial-gradient(circle at 100% 0%, rgba(74,108,247,0.10), transparent 40%),
+      var(--bg);
+    background-attachment: fixed;
+    color: #131A2C;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    animation: bodyIn .5s var(--ease);
   }
+
+  @keyframes bodyIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(74,108,247,0.35); }
+    70% { box-shadow: 0 0 0 10px rgba(74,108,247,0); }
+    100% { box-shadow: 0 0 0 0 rgba(74,108,247,0); }
+  }
+
   .wrap {
-    max-width: 760px;
+    max-width: 780px;
     margin: 0 auto;
-    padding: 24px 18px 60px;
+    padding: 32px 20px 70px;
   }
+
   header.top {
     text-align: center;
-    padding: 18px 0 10px;
+    padding: 12px 0 22px;
+    animation: fadeUp .5s var(--ease);
   }
   header.top h1 {
-    font-size: 22px;
-    color: var(--navy);
-    margin: 0 0 4px;
+    font-family: 'Sora', 'Plus Jakarta Sans', sans-serif;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(100deg, var(--navy) 10%, var(--accent) 60%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 0 0 6px;
   }
   header.top p {
     color: var(--grey);
     margin: 0;
-    font-size: 14px;
+    font-size: 14.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
   }
 
-  /* Start screen */
+  /* ---------- Start screen ---------- */
   .start-card {
     background: var(--card);
-    border-radius: 16px;
-    padding: 32px 28px;
-    box-shadow: 0 2px 14px rgba(27,42,74,0.08);
+    border-radius: var(--radius);
+    padding: 34px 30px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
     text-align: center;
-    margin-top: 24px;
+    margin-top: 22px;
+    animation: fadeUp .55s var(--ease);
   }
-  .start-card h2 { color: var(--navy); margin-top: 0; }
+  .start-card h2 {
+    font-family: 'Sora', sans-serif;
+    color: var(--navy);
+    margin-top: 0;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
   .start-card .hint {
     color: var(--grey);
     font-size: 13.5px;
-    margin: -6px 0 20px;
+    margin: -4px 0 24px;
+    line-height: 1.55;
   }
 
   .chapter-group {
     text-align: left;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .25s var(--ease), transform .25s var(--ease);
+    animation: fadeUp .5s var(--ease) both;
+  }
+  .chapter-group:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
   }
   .chapter-group-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--navy);
+    background: linear-gradient(120deg, var(--navy) 0%, var(--navy-2) 100%);
     color: white;
-    padding: 10px 14px;
+    padding: 13px 16px;
     font-size: 13.5px;
     font-weight: 700;
+    letter-spacing: 0.01em;
   }
   .chapter-group-header label {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     cursor: pointer;
   }
   .chapter-group-header .total-tag {
-    background: rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.16);
+    backdrop-filter: blur(4px);
     border-radius: 20px;
-    padding: 2px 10px;
-    font-size: 11.5px;
-    font-weight: 600;
+    padding: 3px 11px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
   }
   .level-list {
     display: flex;
@@ -98,25 +189,70 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 16px;
+    padding: 12px 16px;
     font-size: 13.5px;
     border-top: 1px solid var(--border);
+    transition: background .18s ease;
   }
+  .level-row:hover { background: var(--accent-soft); }
   .level-row label {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
     cursor: pointer;
     width: 100%;
+    font-weight: 500;
+    color: #2A3550;
   }
   .level-row span.count {
     background: var(--accent-light);
     color: var(--accent);
     border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 11.5px;
+    padding: 3px 11px;
+    font-size: 11px;
     font-weight: 700;
     white-space: nowrap;
+  }
+
+  /* Custom checkboxes */
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 6px;
+    border: 2px solid #CBD3E6;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: all .18s var(--ease);
+  }
+  input[type="checkbox"]:hover { border-color: var(--accent); }
+  input[type="checkbox"]:checked {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border-color: transparent;
+  }
+  input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .chapter-group-header input[type="checkbox"] {
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.08);
+  }
+  .chapter-group-header input[type="checkbox"]:checked {
+    background: white;
+  }
+  .chapter-group-header input[type="checkbox"]:checked::after {
+    border-color: var(--navy);
   }
 
   .mode-select {
@@ -124,61 +260,86 @@
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    margin: 18px 0;
+    margin: 22px 0 18px;
   }
   .mode-btn {
     border: 2px solid var(--border);
     background: white;
-    border-radius: 10px;
-    padding: 10px 16px;
+    border-radius: 30px;
+    padding: 10px 18px;
     font-size: 13.5px;
     cursor: pointer;
-    color: var(--navy);
+    color: var(--navy-2);
     font-weight: 600;
-    transition: all .15s;
+    font-family: inherit;
+    transition: all .2s var(--ease);
   }
-  .mode-btn:hover { border-color: var(--accent); }
-  .mode-btn.selected {
-    background: var(--accent);
-    color: white;
+  .mode-btn:hover {
     border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+  .mode-btn.selected {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 6px 16px rgba(74,108,247,0.32);
   }
   .selection-summary {
     font-size: 13.5px;
-    color: var(--navy);
+    color: var(--navy-2);
     font-weight: 700;
-    margin: 6px 0 14px;
+    margin: 4px 0 16px;
+    transition: color .2s ease;
   }
+
+  button { font-family: inherit; }
+
   button.primary {
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: white;
     border: none;
-    border-radius: 10px;
-    padding: 14px 32px;
+    border-radius: 14px;
+    padding: 15px 34px;
     font-size: 15.5px;
     font-weight: 700;
+    letter-spacing: 0.01em;
     cursor: pointer;
-    margin-top: 12px;
-    transition: background .15s, transform .1s;
+    margin-top: 10px;
+    box-shadow: 0 10px 24px rgba(74,108,247,0.30);
+    transition: transform .18s var(--ease), box-shadow .18s var(--ease), opacity .18s ease;
   }
-  button.primary:hover { background: var(--navy); }
-  button.primary:active { transform: scale(0.98); }
+  button.primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(74,108,247,0.38);
+  }
+  button.primary:active:not(:disabled) { transform: translateY(0) scale(0.98); }
   button.primary:disabled {
-    background: #C6CCD6;
+    background: #DADFEC;
+    box-shadow: none;
     cursor: not-allowed;
+    color: #9AA3B8;
   }
+
   button.secondary {
-    background: transparent;
+    background: white;
     color: var(--accent);
     border: 2px solid var(--accent);
-    border-radius: 10px;
-    padding: 12px 28px;
+    border-radius: 14px;
+    padding: 13px 30px;
     font-size: 14.5px;
     font-weight: 700;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 12px;
+    transition: all .2s var(--ease);
   }
-  button.secondary:hover { background: var(--accent-light); }
+  button.secondary:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(74,108,247,0.22);
+  }
+
   button.ghost {
     background: transparent;
     color: var(--grey);
@@ -186,273 +347,391 @@
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    text-decoration: underline;
-    padding: 8px;
+    padding: 10px 16px;
+    border-radius: 20px;
+    transition: all .2s ease;
   }
-  button.ghost:hover { color: var(--red); }
+  button.ghost:hover {
+    color: var(--red);
+    background: var(--red-light);
+  }
 
-  /* Progress bar */
+  /* ---------- Progress ---------- */
   .progress-wrap {
-    margin: 18px 0 6px;
+    margin: 4px 0 6px;
+    animation: fadeUp .4s var(--ease);
   }
   .progress-track {
     background: var(--border);
     border-radius: 20px;
-    height: 8px;
+    height: 9px;
     overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(16,25,46,0.06);
   }
   .progress-fill {
-    background: linear-gradient(90deg, var(--accent), var(--navy));
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
     height: 100%;
     width: 0%;
-    transition: width .25s ease;
+    border-radius: 20px;
+    transition: width .4s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s linear infinite;
   }
   .progress-label {
     display: flex;
     justify-content: space-between;
     font-size: 12.5px;
     color: var(--grey);
-    margin-top: 6px;
+    margin-top: 8px;
+    font-weight: 600;
   }
 
-  /* Quiz card */
+  /* ---------- Quiz card ---------- */
   .quiz-card {
     background: var(--card);
-    border-radius: 16px;
-    padding: 26px 24px;
-    box-shadow: 0 2px 14px rgba(27,42,74,0.08);
-    margin-top: 14px;
+    border-radius: var(--radius);
+    padding: 30px 28px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    margin-top: 16px;
+    animation: fadeUp .4s var(--ease);
   }
   .chapter-tag {
     display: inline-block;
     background: var(--accent-light);
     color: var(--accent);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 10px;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 5px 12px;
     border-radius: 20px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
   .question-text {
-    font-size: 17px;
+    font-family: 'Sora', sans-serif;
+    font-size: 18px;
     font-weight: 700;
     color: var(--navy);
-    line-height: 1.4;
-    margin-bottom: 18px;
+    line-height: 1.45;
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+    animation: fadeIn .35s var(--ease);
   }
-  .options { display: flex; flex-direction: column; gap: 10px; }
+  .options { display: flex; flex-direction: column; gap: 11px; }
   .option {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     border: 2px solid var(--border);
-    border-radius: 12px;
-    padding: 13px 16px;
+    border-radius: var(--radius-sm);
+    padding: 14px 17px;
     cursor: pointer;
-    transition: all .12s;
+    transition: border-color .16s var(--ease), background .16s var(--ease), transform .12s var(--ease), box-shadow .16s var(--ease);
     font-size: 14.5px;
+    font-weight: 500;
+    color: #253046;
+    background: white;
+    animation: fadeUp .4s var(--ease) both;
   }
-  .option:hover { border-color: var(--accent); background: var(--accent-light); }
+  .option:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateX(3px);
+  }
   .option.selected {
     border-color: var(--accent);
     background: var(--accent-light);
+    box-shadow: 0 6px 16px rgba(74,108,247,0.16);
   }
   .option .letter {
-    flex: 0 0 26px;
-    height: 26px;
+    flex: 0 0 28px;
+    height: 28px;
     border-radius: 50%;
     background: var(--border);
-    color: var(--navy);
-    font-weight: 700;
-    font-size: 13px;
+    color: var(--navy-2);
+    font-weight: 800;
+    font-size: 12.5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all .18s var(--ease);
   }
   .option.selected .letter {
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: white;
+    transform: scale(1.08);
   }
   .nav-row {
     display: flex;
     justify-content: flex-end;
-    margin-top: 22px;
+    margin-top: 26px;
   }
   .quiz-footer-actions {
     display: flex;
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 14px;
   }
 
-  /* Results */
+  /* ---------- Results ---------- */
   .results-card {
     background: var(--card);
-    border-radius: 16px;
-    padding: 30px 26px;
-    box-shadow: 0 2px 14px rgba(27,42,74,0.08);
+    border-radius: var(--radius);
+    padding: 34px 28px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
     text-align: center;
-    margin-top: 18px;
+    margin-top: 20px;
+    animation: fadeUp .5s var(--ease);
+  }
+  .results-card h2 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
   .partial-note {
-    background: #FFF6E5;
-    color: #8A6116;
+    background: var(--amber-light);
+    color: var(--amber);
     font-size: 13px;
-    font-weight: 600;
-    border-radius: 10px;
-    padding: 8px 14px;
-    margin-bottom: 14px;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 9px 16px;
+    margin-bottom: 16px;
     display: inline-block;
+    border: 1px solid rgba(183,121,31,0.18);
   }
   .score-circle {
-    width: 150px;
-    height: 150px;
+    width: 158px;
+    height: 158px;
     border-radius: 50%;
-    margin: 10px auto 18px;
+    margin: 10px auto 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--border) 0);
+    animation: popIn .55s var(--ease);
+    box-shadow: var(--shadow-md);
+    position: relative;
+  }
+  .score-circle::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(var(--accent-2) calc(var(--pct) * 1%), transparent 0);
+    opacity: 0.25;
+    filter: blur(6px);
+    z-index: -1;
   }
   .score-inner {
-    width: 118px;
-    height: 118px;
+    width: 124px;
+    height: 124px;
     border-radius: 50%;
     background: white;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    box-shadow: inset 0 1px 4px rgba(16,25,46,0.06);
   }
   .score-inner .pct {
-    font-size: 30px;
+    font-family: 'Sora', sans-serif;
+    font-size: 32px;
     font-weight: 800;
     color: var(--navy);
+    letter-spacing: -0.02em;
   }
   .score-inner .lbl {
-    font-size: 11px;
+    font-size: 10.5px;
     color: var(--grey);
     text-transform: uppercase;
-    letter-spacing: .5px;
+    letter-spacing: .08em;
+    font-weight: 700;
+    margin-top: 2px;
   }
   .stats-row {
     display: flex;
     justify-content: center;
     gap: 14px;
-    margin: 16px 0 6px;
+    margin: 18px 0 8px;
     flex-wrap: wrap;
   }
   .stat-box {
-    border-radius: 12px;
-    padding: 12px 20px;
-    min-width: 110px;
+    border-radius: var(--radius-sm);
+    padding: 14px 24px;
+    min-width: 120px;
+    transition: transform .2s var(--ease);
+    animation: fadeUp .5s var(--ease) both;
   }
-  .stat-box.good { background: #E9F7EF; }
-  .stat-box.bad { background: #FBEAE8; }
-  .stat-box .num { font-size: 22px; font-weight: 800; }
+  .stat-box:hover { transform: translateY(-3px); }
+  .stat-box.good { background: var(--green-light); border: 1px solid rgba(22,163,74,0.14); }
+  .stat-box.bad { background: var(--red-light); border: 1px solid rgba(225,29,72,0.14); }
+  .stat-box .num {
+    font-family: 'Sora', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+  }
   .stat-box.good .num { color: var(--green); }
   .stat-box.bad .num { color: var(--red); }
-  .stat-box .lbl { font-size: 12px; color: var(--grey); margin-top: 2px; }
+  .stat-box .lbl { font-size: 12px; color: var(--grey); margin-top: 3px; font-weight: 600; }
 
   .appreciation {
-    margin: 18px 0 6px;
+    margin: 20px 0 8px;
     font-size: 14.5px;
-    color: var(--navy);
-    font-weight: 600;
+    color: var(--navy-2);
+    font-weight: 700;
   }
 
-  /* Correction list */
-  .correction-section { margin-top: 24px; }
+  /* ---------- Correction list ---------- */
+  .correction-section { margin-top: 28px; animation: fadeUp .5s var(--ease); }
   .correction-section h2 {
+    font-family: 'Sora', sans-serif;
     color: var(--navy);
-    font-size: 18px;
-    margin-bottom: 14px;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
   }
   .correction-chapter-title {
-    font-size: 13px;
+    font-size: 12.5px;
     text-transform: uppercase;
-    letter-spacing: .5px;
+    letter-spacing: .06em;
     color: var(--accent);
-    font-weight: 700;
-    margin: 22px 0 10px;
-    padding-bottom: 6px;
+    font-weight: 800;
+    margin: 26px 0 12px;
+    padding-bottom: 8px;
     border-bottom: 2px solid var(--border);
   }
   .correction-item {
     background: var(--card);
-    border-radius: 12px;
-    padding: 16px 18px;
-    margin-bottom: 10px;
+    border-radius: var(--radius-sm);
+    padding: 17px 19px;
+    margin-bottom: 11px;
+    border: 1px solid var(--border);
     border-left: 4px solid var(--border);
     text-align: left;
+    box-shadow: var(--shadow-sm);
+    transition: transform .18s var(--ease), box-shadow .18s var(--ease);
+    animation: fadeUp .4s var(--ease) both;
+  }
+  .correction-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
   .correction-item.correct { border-left-color: var(--green); }
   .correction-item.incorrect { border-left-color: var(--red); }
-  .correction-item.unanswered { border-left-color: #C6A65B; }
+  .correction-item.unanswered { border-left-color: var(--amber); }
   .correction-item .qhead {
     font-weight: 700;
     color: var(--navy);
     font-size: 14.5px;
-    margin-bottom: 8px;
-  }
-  .correction-item .status-icon {
-    font-size: 13px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 6px;
-    margin-left: 8px;
-  }
-  .status-icon.ok { background: #E9F7EF; color: var(--green); }
-  .status-icon.ko { background: #FBEAE8; color: var(--red); }
-  .status-icon.na { background: #FFF6E5; color: #8A6116; }
-  .correction-item .answer-line {
-    font-size: 13.5px;
-    margin: 4px 0;
+    margin-bottom: 9px;
     line-height: 1.5;
   }
-  .correction-item .your-answer.wrong { color: var(--red); }
-  .correction-item .your-answer.right { color: var(--green); }
-  .correction-item .correct-answer { color: var(--green); font-weight: 600; }
+  .correction-item .status-icon {
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: 8px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .status-icon.ok { background: var(--green-light); color: var(--green); }
+  .status-icon.ko { background: var(--red-light); color: var(--red); }
+  .status-icon.na { background: var(--amber-light); color: var(--amber); }
+  .correction-item .answer-line {
+    font-size: 13.5px;
+    margin: 5px 0;
+    line-height: 1.6;
+    color: #3B4560;
+  }
+  .correction-item .your-answer.wrong { color: var(--red); font-weight: 600; }
+  .correction-item .your-answer.right { color: var(--green); font-weight: 600; }
+  .correction-item .correct-answer { color: var(--green); font-weight: 700; }
   .correction-item .explain {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 13px;
     color: var(--grey);
     background: var(--bg);
-    border-radius: 8px;
-    padding: 8px 12px;
-    line-height: 1.5;
+    border-radius: 10px;
+    padding: 10px 14px;
+    line-height: 1.6;
+    border: 1px solid var(--border);
   }
 
   .filter-bar {
     display: flex;
-    gap: 8px;
+    gap: 9px;
     justify-content: center;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
   }
   .filter-btn {
     border: 2px solid var(--border);
     background: white;
-    border-radius: 20px;
-    padding: 7px 16px;
+    border-radius: 30px;
+    padding: 8px 18px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     color: var(--grey);
+    font-family: inherit;
+    transition: all .2s var(--ease);
+  }
+  .filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
   }
   .filter-btn.active {
-    border-color: var(--accent);
-    background: var(--accent);
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: white;
+    box-shadow: 0 6px 14px rgba(74,108,247,0.28);
   }
 
   .hidden { display: none !important; }
 
   footer.foot {
     text-align: center;
-    color: var(--grey);
+    color: var(--grey-soft);
     font-size: 12px;
-    margin-top: 30px;
+    font-weight: 500;
+    margin-top: 36px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Stagger animation for option list */
+  .options .option:nth-child(1) { animation-delay: .02s; }
+  .options .option:nth-child(2) { animation-delay: .06s; }
+  .options .option:nth-child(3) { animation-delay: .10s; }
+  .options .option:nth-child(4) { animation-delay: .14s; }
+  .chapter-group:nth-child(1) { animation-delay: .04s; }
+  .chapter-group:nth-child(2) { animation-delay: .08s; }
+  .chapter-group:nth-child(3) { animation-delay: .12s; }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 20px 14px 50px; }
+    header.top h1 { font-size: 22px; }
+    .start-card, .quiz-card, .results-card { padding: 22px 18px; border-radius: 16px; }
+    .question-text { font-size: 16px; }
+    button.primary { width: 100%; padding: 14px 20px; }
+    .nav-row { justify-content: stretch; }
+    .stat-box { min-width: 100px; padding: 12px 16px; }
+    .score-circle { width: 132px; height: 132px; }
+    .score-inner { width: 104px; height: 104px; }
+    .score-inner .pct { font-size: 26px; }
   }
 </style>
 </head>
@@ -545,7 +824,7 @@
 <script>
 const QUIZ_DATA = [{"title": "Chapitre 1 : Les Fonctions", "questions": [{"num": 1, "text": "Une fonction en C est :", "options": ["Une variable", "Un bloc de code réutilisable", "Une boucle", "Une structure"], "correct": 1}, {"num": 2, "text": "Une fonction peut recevoir :", "options": ["Un seul paramètre", "Aucun paramètre", "Plusieurs paramètres", "Les réponses B et C"], "correct": 3}, {"num": 3, "text": "Le mot-clé void signifie :", "options": ["La fonction retourne un entier", "La fonction ne retourne rien", "La fonction est privée", "La fonction est vide"], "correct": 1}, {"num": 4, "text": "Lequel est un bon nom de fonction ?", "options": ["x", "a1", "afficherClient", "toto"], "correct": 2}, {"num": 5, "text": "Quel élément indique le type de valeur renvoyée ?", "options": ["Le nom", "Le prototype", "Le type de retour", "Les paramètres"], "correct": 2}, {"num": 6, "text": "Que fait l'instruction return ?", "options": ["Affiche une valeur", "Termine la fonction", "Retourne une valeur", "B et C"], "correct": 3}, {"num": 7, "text": "Une fonction int somme() doit obligatoirement retourner :", "options": ["Un caractère", "Un entier", "Une chaîne", "Rien"], "correct": 1}, {"num": 8, "text": "Une fonction void afficher() :", "options": ["Retourne un entier", "Retourne un float", "Ne retourne rien", "Retourne un bool"], "correct": 2}, {"num": 9, "text": "Les paramètres d'une fonction sont :", "options": ["Les variables reçues en entrée", "Les variables globales", "Les prototypes", "Les commentaires"], "correct": 0}, {"num": 10, "text": "Une fonction s'exécute :", "options": ["Dès sa définition", "Seulement lorsqu'elle est appelée", "Au démarrage du PC", "À la compilation"], "correct": 1}, {"num": 11, "text": "Le passage par valeur signifie :", "options": ["On passe l'adresse mémoire", "On passe une copie de la variable", "On passe le pointeur", "On modifie directement la variable originale"], "correct": 1}, {"num": 12, "text": "Avec le passage par valeur :", "options": ["Modifier le paramètre modifie toujours la variable d'origine", "Modifier le paramètre ne modifie pas la variable d'origine", "La variable disparaît", "Le programme plante"], "correct": 1}, {"num": 13, "text": "Pourquoi utilise-t-on des fonctions ?", "options": ["Pour éviter la duplication du code", "Pour rendre le code réutilisable", "Pour faciliter la maintenance", "Toutes les réponses"], "correct": 3}, {"num": 14, "text": "Le compilateur lit le code :", "options": ["De bas en haut", "De gauche à droite", "De haut en bas", "Au hasard"], "correct": 2}, {"num": 15, "text": "Le prototype d'une fonction sert à :", "options": ["Décorer le programme", "Informer le compilateur de son existence", "Créer une variable", "Définir une structure"], "correct": 1}, {"num": 16, "text": "Le prototype se termine par :", "options": ["}", ")", ";", ":"], "correct": 2}, {"num": 17, "text": "Le prototype contient :", "options": ["Le corps de la fonction", "Seulement la signature", "Les variables locales", "Les commentaires"], "correct": 1}, {"num": 18, "text": "Dans un projet réel, les prototypes sont généralement placés dans :", "options": ["Un fichier .h", "Un fichier .txt", "Un fichier .exe", "Un fichier .png"], "correct": 0}, {"num": 19, "text": "Lequel est un prototype valide ?", "options": ["int somme(int a,int b);", "int somme(int a,int b){}", "int somme", "return somme();"], "correct": 0}, {"num": 20, "text": "Une fonction qui vérifie un port valide retourne généralement :", "options": ["0 ou 1", "Une chaîne", "Un float", "Un tableau"], "correct": 0}, {"num": 21, "text": "Une fonction peut appeler :", "options": ["Seulement main()", "Une autre fonction", "Seulement elle-même", "Aucune fonction"], "correct": 1}, {"num": 22, "text": "Une fonction qui ne retourne rien utilise :", "options": ["int", "float", "void", "char"], "correct": 2}, {"num": 23, "text": "Le nom d'une fonction doit :", "options": ["Décrire son rôle", "Être un chiffre", "Être une adresse mémoire", "Commencer obligatoirement par une majuscule"], "correct": 0}, {"num": 24, "text": "La signature d'une fonction comprend :", "options": ["Le type de retour", "Le nom", "Les paramètres", "Toutes les réponses"], "correct": 3}, {"num": 25, "text": "Combien de valeurs une fonction peut-elle retourner avec return ?", "options": ["Une seule", "Deux", "Trois", "Une infinité"], "correct": 0}, {"num": 26, "text": "Une fonction sans paramètres possède :", "options": ["Un seul paramètre caché", "Aucun paramètre", "Toujours un entier", "Un tableau"], "correct": 1}, {"num": 27, "text": "Quel symbole ouvre le corps d'une fonction ?", "options": ["(", "[", "{", "<"], "correct": 2}, {"num": 28, "text": "Le corps d'une fonction contient :", "options": ["Les instructions", "Les prototypes", "Les commentaires uniquement", "Les bibliothèques"], "correct": 0}, {"num": 29, "text": "Une fonction peut être appelée :", "options": ["Depuis main()", "Depuis une autre fonction", "Les deux", "Nulle part"], "correct": 2}, {"num": 30, "text": "Quel est le principal avantage des fonctions ?", "options": ["Réduire la duplication du code", "Augmenter la taille du programme", "Utiliser plus de mémoire", "Ralentir le programme"], "correct": 0}, {"num": 31, "text": "Le passage par valeur copie :", "options": ["Les adresses", "Les variables", "Les valeurs", "Les pointeurs"], "correct": 2}, {"num": 32, "text": "Après un passage par valeur :", "options": ["Les variables originales changent", "Les copies changent", "Les deux changent", "Le compilateur refuse"], "correct": 1}, {"num": 33, "text": "Le compilateur doit connaître une fonction :", "options": ["Après son appel", "Avant son appel", "Jamais", "Après l'exécution"], "correct": 1}, {"num": 34, "text": "Le prototype permet :", "options": ["D'appeler une fonction définie plus bas", "De créer une boucle", "D'afficher du texte", "De déclarer une structure"], "correct": 0}, {"num": 35, "text": "Dans un prototype, les noms des paramètres sont :", "options": ["Obligatoires", "Facultatifs", "Interdits", "Remplacés par return"], "correct": 1}, {"num": 36, "text": "Le type bool apparaît officiellement à partir de :", "options": ["C89", "C90", "C99", "C11"], "correct": 2}, {"num": 37, "text": "Avant C99 :", "options": ["Le type bool existait", "On utilisait 0 et toute valeur différente de 0", "On utilisait uniquement 1", "Les conditions étaient impossibles"], "correct": 1}, {"num": 38, "text": "En C, la valeur FAUX correspond généralement à :", "options": ["1", "-1", "0", "100"], "correct": 2}, {"num": 39, "text": "En C, VRAI correspond à :", "options": ["Seulement 1", "Toute valeur différente de 0", "255 uniquement", "-1 uniquement"], "correct": 1}, {"num": 40, "text": "La fonction estPortValide() retourne :", "options": ["Une chaîne", "Un entier", "Un float", "Un caractère"], "correct": 1}, {"num": 41, "text": "Un port valide est compris entre :", "options": ["0 et 1024", "1 et 65535", "10 et 50000", "100 et 99999"], "correct": 1}, {"num": 42, "text": "L'instruction printf(\"%d\", port); affiche :", "options": ["Une chaîne", "Un caractère", "Un entier", "Une adresse mémoire"], "correct": 2}, {"num": 43, "text": "%s est utilisé pour afficher :", "options": ["Un entier", "Une chaîne", "Un float", "Un booléen"], "correct": 1}, {"num": 44, "text": "%d est utilisé pour afficher :", "options": ["Une chaîne", "Un entier", "Un float", "Un tableau"], "correct": 1}, {"num": 45, "text": "Le caractère \\n sert à :", "options": ["Fermer le programme", "Ajouter une nouvelle ligne", "Supprimer une ligne", "Ajouter un espace"], "correct": 1}, {"num": 46, "text": "Une chaîne de caractères en C se termine par :", "options": [";", "\\0", ".", "\\n"], "correct": 1}, {"num": 47, "text": "Une chaîne est stockée sous forme de :", "options": ["Tableau de char", "Tableau de int", "Tableau de float", "Structure"], "correct": 0}, {"num": 48, "text": "Une fonction peut recevoir :", "options": ["Des tableaux", "Des entiers", "Des chaînes", "Toutes les réponses"], "correct": 3}, {"num": 49, "text": "Le mot-clé return :", "options": ["Continue la fonction", "Quitte la fonction", "Redémarre la fonction", "Ignore la fonction"], "correct": 1}, {"num": 50, "text": "Après un return :", "options": ["Les instructions suivantes sont exécutées", "La fonction est terminée", "Le programme recommence", "Rien ne se passe"], "correct": 1}, {"num": 51, "text": "Une fonction peut retourner :", "options": ["int", "float", "char", "Tous ces types"], "correct": 3}, {"num": 52, "text": "Si une fonction retourne void, écrire return valeur; est :", "options": ["Correct", "Incorrect", "Obligatoire", "Recommandé"], "correct": 1}, {"num": 53, "text": "Le principal intérêt d'un prototype est :", "options": ["Faciliter la compilation", "Accélérer le processeur", "Économiser la RAM", "Créer des structures"], "correct": 0}, {"num": 54, "text": "Une bonne fonction est :", "options": ["Courte", "Claire", "Réutilisable", "Toutes les réponses"], "correct": 3}, {"num": 55, "text": "Lequel est un bon nom ?", "options": ["x", "a", "calculerSomme", "zz"], "correct": 2}, {"num": 56, "text": "Une abstraction permet :", "options": ["D'éviter les répétitions", "D'augmenter le nombre de bugs", "D'effacer le code", "D'empêcher les fonctions"], "correct": 0}, {"num": 57, "text": "Une fonction est exécutée :", "options": ["Une seule fois", "À chaque appel", "À chaque compilation", "Au démarrage du PC"], "correct": 1}, {"num": 58, "text": "Combien de fois peut-on appeler une fonction ?", "options": ["Une seule fois", "Deux fois", "Autant de fois que nécessaire", "Jamais"], "correct": 2}, {"num": 59, "text": "Le passage par valeur concerne :", "options": ["Les variables locales", "Les copies des arguments", "Les pointeurs uniquement", "Les bibliothèques"], "correct": 1}, {"num": 60, "text": "Modifier un paramètre reçu par valeur modifie :", "options": ["L'original", "La copie", "Les deux", "Aucun"], "correct": 1}, {"num": 61, "text": "Le prototype est placé généralement :", "options": ["Avant main()", "Après main()", "Dans une boucle", "Dans printf"], "correct": 0}, {"num": 62, "text": "Les définitions des fonctions sont souvent placées :", "options": ["Après main()", "Dans printf", "Dans scanf", "Dans return"], "correct": 0}, {"num": 63, "text": "Dans un projet réel, les prototypes sont regroupés dans :", "options": ["Les fichiers .h", "Les fichiers .jpg", "Les fichiers .mp3", "Les fichiers .exe"], "correct": 0}, {"num": 64, "text": "Les définitions des fonctions sont généralement dans :", "options": ["Les fichiers .c", "Les fichiers .png", "Les fichiers .pdf", "Les fichiers .zip"], "correct": 0}, {"num": 65, "text": "Une fonction améliore :", "options": ["La lisibilité", "La maintenance", "La réutilisation", "Toutes les réponses"], "correct": 3}, {"num": 66, "text": "Lequel est une fonction de validation ?", "options": ["estPortValide()", "main()", "printf()", "scanf()"], "correct": 0}, {"num": 67, "text": "La règle fondamentale du cours est :", "options": ["Toujours recopier le code", "Éviter la duplication du code", "Ne jamais utiliser de fonction", "Utiliser uniquement main()"], "correct": 1}, {"num": 68, "text": "Une fonction est :", "options": ["Une structure", "Une variable", "Un sous-programme", "Un tableau"], "correct": 2}, {"num": 69, "text": "Une fonction possède généralement :", "options": ["Un nom", "Des paramètres", "Un type de retour", "Toutes les réponses"], "correct": 3}, {"num": 70, "text": "Le but principal des fonctions est :", "options": ["Organiser le programme", "Réutiliser le code", "Faciliter la maintenance", "Toutes les réponses"], "correct": 3}]}, {"title": "Chapitre 2 : Tableaux & Récursion", "questions": [{"num": 1, "text": "Pourquoi utilise-t-on un tableau ?", "options": ["Pour stocker une seule valeur", "Pour stocker plusieurs valeurs du même type", "Pour créer une fonction", "Pour remplacer une structure"], "correct": 1}, {"num": 2, "text": "Les tableaux permettent de :", "options": ["Réduire le nombre de variables", "Gérer plusieurs clients", "Parcourir les données avec une boucle", "Toutes les réponses"], "correct": 3}, {"num": 3, "text": "Quelle boucle est généralement utilisée pour parcourir un tableau ?", "options": ["if", "switch", "for", "goto"], "correct": 2}, {"num": 4, "text": "Une fonction récursive est une fonction qui :", "options": ["Appelle main()", "S'appelle elle-même", "Appelle printf()", "N'appelle aucune fonction"], "correct": 1}, {"num": 5, "text": "Une fonction récursive possède obligatoirement :", "options": ["Un tableau", "Une boucle", "Un cas de base", "Un pointeur"], "correct": 2}, {"num": 6, "text": "Le cas de base sert à :", "options": ["Continuer la récursion", "Arrêter la récursion", "Accélérer le programme", "Afficher une chaîne"], "correct": 1}, {"num": 7, "text": "Si le cas de base n'est jamais atteint :", "options": ["Rien ne se passe", "Le programme compile plus vite", "Il y a une récursion infinie", "Le tableau est supprimé"], "correct": 2}, {"num": 8, "text": "Une récursion infinie provoque généralement :", "options": ["Une erreur de compilation", "Un stack overflow", "Une erreur de syntaxe", "Un warning uniquement"], "correct": 1}, {"num": 9, "text": "Le \"stack overflow\" signifie :", "options": ["Débordement de la pile d'exécution", "Débordement du disque", "Débordement de la RAM", "Débordement du processeur"], "correct": 0}, {"num": 10, "text": "Chaque appel récursif doit :", "options": ["S'éloigner du cas de base", "Se rapprocher du cas de base", "Revenir au même état", "Être identique au précédent"], "correct": 1}, {"num": 11, "text": "Les deux parties indispensables d'une récursion sont :", "options": ["Prototype et boucle", "Cas de base et appel récursif", "Tableau et structure", "If et switch"], "correct": 1}, {"num": 12, "text": "Dans afficherJusqua(n), quel paramètre est réduit ?", "options": ["n+1", "n", "n-1", "2n"], "correct": 2}, {"num": 13, "text": "Dans l'exemple du cours, quand n == 0 :", "options": ["On affiche 0", "On retourne immédiatement", "On recommence", "On affiche -1"], "correct": 1}, {"num": 14, "text": "La première phase d'une récursion est appelée :", "options": ["Montée", "Descente", "Boucle", "Itération"], "correct": 1}, {"num": 15, "text": "Pendant la descente :", "options": ["Les appels s'empilent", "Les appels disparaissent", "Les variables sont supprimées", "Rien ne se passe"], "correct": 0}, {"num": 16, "text": "La deuxième phase est :", "options": ["La remontée", "La compilation", "L'initialisation", "La déclaration"], "correct": 0}, {"num": 17, "text": "Pendant la remontée :", "options": ["Les résultats reviennent", "Les appels augmentent", "Le tableau disparaît", "La pile augmente"], "correct": 0}, {"num": 18, "text": "Dans afficherJusqua(4), quel est le premier appel ?", "options": ["afficherJusqua(0)", "afficherJusqua(1)", "afficherJusqua(4)", "afficherJusqua(3)"], "correct": 2}, {"num": 19, "text": "Quel est le dernier appel avant le cas de base ?", "options": ["afficherJusqua(5)", "afficherJusqua(1)", "afficherJusqua(0)", "afficherJusqua(-1)"], "correct": 1}, {"num": 20, "text": "Si le printf est placé APRÈS l'appel récursif :", "options": ["L'ordre est croissant", "L'ordre est décroissant", "Rien ne s'affiche", "Le programme plante"], "correct": 1}, {"num": 21, "text": "Si le printf est placé AVANT l'appel récursif :", "options": ["Les valeurs s'affichent pendant la descente", "Pendant la remontée", "Elles ne s'affichent jamais", "Elles sont supprimées"], "correct": 0}, {"num": 22, "text": "Dans la longueur récursive d'une chaîne, le cas de base est :", "options": ["chaine[i]=='\\0'", "chaine[i]=='A'", "i==100", "chaine==NULL"], "correct": 0}, {"num": 23, "text": "Le caractère '\\0' représente :", "options": ["Le premier caractère", "La fin d'une chaîne", "Un espace", "Une tabulation"], "correct": 1}, {"num": 24, "text": "Dans taiChainRec(chaine,0), on commence :", "options": ["Au dernier caractère", "Au milieu", "À l'indice 0", "À l'indice 1"], "correct": 2}, {"num": 25, "text": "À chaque appel récursif, l'indice devient :", "options": ["i-1", "i+1", "i×2", "inchangé"], "correct": 1}, {"num": 26, "text": "La version récursive de strlen utilise :", "options": ["Une boucle", "Le caractère '\\0'", "Une structure", "Un switch"], "correct": 1}, {"num": 27, "text": "Le résultat de taiChainRec(\"Bon\",0) est :", "options": ["2", "3", "4", "0"], "correct": 1}, {"num": 28, "text": "Dans la remontée, chaque appel ajoute :", "options": ["0", "1", "2", "3"], "correct": 1}, {"num": 29, "text": "Les additions sont effectuées :", "options": ["Pendant la descente", "Pendant la remontée", "Avant le premier appel", "Après main"], "correct": 1}, {"num": 30, "text": "Pour parcourir un tableau récursivement, on passe généralement :", "options": ["Seulement le tableau", "Le tableau et un indice", "Seulement un entier", "Seulement une chaîne"], "correct": 1}, {"num": 31, "text": "Le cas de base pour un tableau est souvent :", "options": ["i >= taille", "i == 1", "i < 0", "taille == 1"], "correct": 0}, {"num": 32, "text": "Dans l'exemple du cours, les clients sont affichés :", "options": ["Grâce à une boucle while", "Grâce à une fonction récursive", "Grâce à goto", "Grâce à switch"], "correct": 1}, {"num": 33, "text": "Pour afficher les clients dans l'ordre inverse, il suffit :", "options": ["D'utiliser un while", "D'inverser le printf et l'appel récursif", "De supprimer le cas de base", "D'ajouter une boucle"], "correct": 1}, {"num": 34, "text": "La règle d'or de la récursion est :", "options": ["Cas de base + convergence", "Deux boucles", "Deux tableaux", "Deux prototypes"], "correct": 0}, {"num": 35, "text": "La convergence signifie :", "options": ["Le paramètre se rapproche du cas de base", "Le paramètre augmente sans fin", "Le programme accélère", "Le tableau grandit"], "correct": 0}, {"num": 36, "text": "Quel problème est naturellement récursif ?", "options": ["Parcours d'un arbre", "Parcours d'un dossier", "Fibonacci", "Toutes les réponses"], "correct": 3}, {"num": 37, "text": "Pour parcourir un tableau simple, on préfère généralement :", "options": ["La récursion", "La boucle for", "goto", "switch"], "correct": 1}, {"num": 38, "text": "La récursion est particulièrement utile lorsque :", "options": ["La profondeur est inconnue", "On connaît exactement N", "On affiche une seule valeur", "On utilise uniquement printf"], "correct": 0}, {"num": 39, "text": "Chaque appel récursif réserve :", "options": ["Un espace dans la pile (stack)", "Un disque", "Une clé USB", "Une structure"], "correct": 0}, {"num": 40, "text": "Le plus grand danger de la récursion est :", "options": ["Les tableaux", "Le stack overflow", "Les chaînes", "Les structures"], "correct": 1}, {"num": 41, "text": "Une fonction récursive correcte possède :", "options": ["Une seule boucle", "Un cas de base atteignable", "Plusieurs main()", "Plusieurs prototypes"], "correct": 1}, {"num": 42, "text": "Pourquoi le cas de base est-il indispensable ?", "options": ["Pour accélérer le processeur", "Pour arrêter la récursion", "Pour créer un tableau", "Pour déclarer une structure"], "correct": 1}, {"num": 43, "text": "Lors de la descente d'une récursion :", "options": ["Les fonctions attendent le résultat de l'appel suivant", "Les fonctions retournent immédiatement", "Les variables disparaissent", "Le programme s'arrête"], "correct": 0}, {"num": 44, "text": "Lors de la remontée :", "options": ["Les appels sont recréés", "Les résultats sont renvoyés vers les appels précédents", "Les tableaux sont supprimés", "Les paramètres changent automatiquement"], "correct": 1}, {"num": 45, "text": "Le premier appel effectué est appelé :", "options": ["Le cas de base", "L'appel initial", "La remontée", "Le dernier appel"], "correct": 1}, {"num": 46, "text": "Dans la pile d'exécution (Stack), les appels sont :", "options": ["Indépendants", "Empilés les uns sur les autres", "Stockés dans un tableau", "Enregistrés sur le disque"], "correct": 1}, {"num": 47, "text": "Que se passe-t-il si un appel récursif ne modifie jamais son paramètre ?", "options": ["Rien", "La récursion risque de devenir infinie", "Le compilateur corrige automatiquement", "Le programme devient plus rapide"], "correct": 1}, {"num": 48, "text": "Une fonction récursive peut remplacer :", "options": ["Une boucle", "Une structure", "Une variable", "Un prototype"], "correct": 0}, {"num": 49, "text": "Dans le cours, la fonction afficherJusqua() affiche :", "options": ["Les nombres de N à 1", "Les nombres de 1 à N", "Seulement N", "Seulement 0"], "correct": 1}, {"num": 50, "text": "Pourquoi ?", "options": ["Parce que le printf est après l'appel récursif", "Parce que le printf est avant le cas de base", "Parce que la boucle l'impose", "Parce que main() l'impose"], "correct": 0}, {"num": 51, "text": "Si on place le printf avant l'appel récursif, le résultat sera :", "options": ["Croissant", "Décroissant", "Aléatoire", "Identique"], "correct": 1}, {"num": 52, "text": "Dans taiChainRec(\"Bonjour\",0), combien d'appels sont effectués ?", "options": ["7", "8", "6", "9"], "correct": 1}, {"num": 53, "text": "Pourquoi y a-t-il un appel supplémentaire ?", "options": ["Pour compter le caractère '\\0'", "Parce que le cas de base teste '\\0'", "Pour afficher la chaîne", "Pour utiliser printf"], "correct": 1}, {"num": 54, "text": "Le caractère '\\0' compte-t-il dans la longueur ?", "options": ["Oui", "Non", "Seulement avec strlen", "Seulement avec la récursion"], "correct": 1}, {"num": 55, "text": "Le premier caractère d'une chaîne possède l'indice :", "options": ["1", "0", "-1", "2"], "correct": 1}, {"num": 56, "text": "Le dernier caractère utile est situé :", "options": ["Après '\\0'", "Avant '\\0'", "Toujours à l'indice 255", "Toujours à l'indice 100"], "correct": 1}, {"num": 57, "text": "L'appel initial conseillé est :", "options": ["taiChainRec(chaine,1)", "taiChainRec(chaine,0)", "taiChainRec(chaine,-1)", "taiChainRec(chaine,taille)"], "correct": 1}, {"num": 58, "text": "Pourquoi utiliser un indice plutôt qu'un pointeur dans ce chapitre ?", "options": ["Plus rapide", "Plus simple pour un débutant", "Obligatoire en C", "Plus de mémoire"], "correct": 1}, {"num": 59, "text": "L'arithmétique des pointeurs sera étudiée dans :", "options": ["Chapitre 2", "Chapitre 3", "Chapitre 4", "Chapitre 5"], "correct": 2}, {"num": 60, "text": "Lors du parcours récursif d'un tableau, quel paramètre évolue ?", "options": ["Le tableau", "La taille", "L'indice", "Le type"], "correct": 2}, {"num": 61, "text": "Le cas de base du parcours d'un tableau est souvent :", "options": ["i > taille", "i >= taille", "i == 1", "taille == 0"], "correct": 1}, {"num": 62, "text": "Dans l'exemple des clients, le tableau des IP est :", "options": ["Un tableau de float", "Un tableau 2D de caractères", "Un tableau d'entiers", "Une structure"], "correct": 1}, {"num": 63, "text": "Le tableau des ports est :", "options": ["Un tableau d'entiers", "Un tableau de chaînes", "Un tableau de float", "Un tableau de bool"], "correct": 0}, {"num": 64, "text": "Pourquoi les tableaux parallèles sont-ils une limite ?", "options": ["Les données sont séparées", "Ils utilisent beaucoup de mémoire", "Ils empêchent les fonctions", "Ils empêchent les boucles"], "correct": 0}, {"num": 65, "text": "Le chapitre suivant remplace les tableaux parallèles par :", "options": ["Les pointeurs", "Les structures (struct)", "Les fichiers", "Les listes"], "correct": 1}, {"num": 66, "text": "Une boucle est généralement préférable lorsque :", "options": ["La profondeur est inconnue", "Le parcours est simple", "On manipule un arbre", "On parcourt des dossiers"], "correct": 1}, {"num": 67, "text": "La récursion est préférable lorsque :", "options": ["Le problème est naturellement récursif", "On affiche un entier", "On utilise printf", "On déclare une variable"], "correct": 0}, {"num": 68, "text": "Un exemple classique de récursion est :", "options": ["Factorielle", "Fibonacci", "Parcours d'un arbre", "Toutes les réponses"], "correct": 3}, {"num": 69, "text": "La pile (Stack) possède :", "options": ["Une taille illimitée", "Une taille limitée", "Une taille infinie", "Aucune taille"], "correct": 1}, {"num": 70, "text": "Lorsque la pile est pleine :", "options": ["Rien", "Stack Overflow", "Warning uniquement", "Compilation impossible"], "correct": 1}, {"num": 71, "text": "Le programme se termine généralement par :", "options": ["Stack Overflow", "Segmentation Fault", "Les deux sont possibles", "Aucune erreur"], "correct": 2}, {"num": 72, "text": "La loi n°1 de la récursion est :", "options": ["Cas de base obligatoire", "Deux fonctions", "Deux boucles", "Deux tableaux"], "correct": 0}, {"num": 73, "text": "La loi n°2 est :", "options": ["Utiliser printf", "Convergence vers le cas de base", "Utiliser une boucle", "Déclarer un prototype"], "correct": 1}, {"num": 74, "text": "Si ces deux lois sont respectées :", "options": ["La récursion se termine correctement", "Le compilateur plante", "La mémoire disparaît", "Rien"], "correct": 0}, {"num": 75, "text": "Lequel n'est PAS un usage naturel de la récursion ?", "options": ["Arbres", "Dossiers", "Fibonacci", "Déclaration d'une variable"], "correct": 3}, {"num": 76, "text": "Une boucle for est généralement :", "options": ["Plus lente", "Plus rapide", "Toujours interdite", "Plus compliquée"], "correct": 1}, {"num": 77, "text": "Chaque appel récursif réserve :", "options": ["Une variable globale", "Une nouvelle zone mémoire dans la pile", "Une structure", "Un tableau"], "correct": 1}, {"num": 78, "text": "Dans une récursion correcte :", "options": ["Les paramètres convergent", "Les paramètres augmentent sans limite", "Les paramètres restent constants", "Les paramètres disparaissent"], "correct": 0}, {"num": 79, "text": "Le plus gros piège de la récursion est :", "options": ["Le manque de mémoire vidéo", "La récursion infinie", "Le compilateur", "Les commentaires"], "correct": 1}, {"num": 80, "text": "À la fin du chapitre 2, l'étudiant doit savoir :", "options": ["Lire une trace d'exécution récursive", "Écrire une fonction récursive", "Choisir entre boucle et récursion", "Toutes les réponses"], "correct": 3}]}, {"title": "Chapitre 3 : Les Structures", "questions": [{"num": 1, "text": "Une structure (struct) est :", "options": ["Une boucle", "Un type de données composé", "Une fonction", "Un tableau"], "correct": 1}, {"num": 2, "text": "Pourquoi utilise-t-on une structure ?", "options": ["Pour regrouper plusieurs données liées", "Pour créer une boucle", "Pour remplacer printf", "Pour remplacer main"], "correct": 0}, {"num": 3, "text": "Une structure peut contenir :", "options": ["Des int", "Des char", "Des float", "Toutes les réponses"], "correct": 3}, {"num": 4, "text": "Quel mot-clé permet de déclarer une structure ?", "options": ["class", "struct", "object", "record"], "correct": 1}, {"num": 5, "text": "Une structure représente généralement :", "options": ["Une entité", "Une boucle", "Une bibliothèque", "Une condition"], "correct": 0}, {"num": 6, "text": "Lequel est une déclaration correcte ?", "options": ["struct Client{ char ip[16]; int port; };", "Client struct{ };", "class Client{};", "record Client{};"], "correct": 0}, {"num": 7, "text": "Le point-virgule après la déclaration d'une structure est :", "options": ["Facultatif", "Obligatoire", "Interdit", "Ignoré"], "correct": 1}, {"num": 8, "text": "Une variable de type structure se déclare avec :", "options": ["struct Client c;", "Client();", "Client[];", "int Client;"], "correct": 0}, {"num": 9, "text": "Quel opérateur permet d'accéder à un champ ?", "options": [":", ".", "::", "#"], "correct": 1}, {"num": 10, "text": "c.port signifie :", "options": ["La taille de c", "Le champ port de c", "Le prototype de c", "Une fonction"], "correct": 1}, {"num": 11, "text": "Pour modifier le port :", "options": ["c.port=80;", "port(c)=80;", "c->80;", "port=80.c;"], "correct": 0}, {"num": 12, "text": "Pour afficher l'IP :", "options": ["printf(\"%s\",c.ip);", "printf(\"%d\",c.ip);", "printf(\"%f\",c.ip);", "printf(\"%c\",c.ip);"], "correct": 0}, {"num": 13, "text": "Le champ ip est :", "options": ["Un entier", "Une chaîne de caractères", "Un float", "Un bool"], "correct": 1}, {"num": 14, "text": "Le champ etat sert à :", "options": ["Stocker une IP", "Indiquer si le client est actif", "Stocker une date", "Stocker un tableau"], "correct": 1}, {"num": 15, "text": "Dans le cours : 0 signifie :", "options": ["Actif", "Inactif", "Port invalide", "Erreur"], "correct": 1}, {"num": 16, "text": "1 signifie :", "options": ["Actif", "Inactif", "Faux", "Null"], "correct": 0}, {"num": 17, "text": "Le port réseau valide est compris entre :", "options": ["0 et 1000", "1 et 65535", "1000 et 70000", "80 et 443"], "correct": 1}, {"num": 18, "text": "Pourquoi les tableaux parallèles sont-ils dangereux ?", "options": ["Les données peuvent être désynchronisées", "Ils sont interdits en C", "Ils utilisent trop de RAM", "Ils ralentissent le compilateur"], "correct": 0}, {"num": 19, "text": "Les structures permettent de :", "options": ["Garder les données ensemble", "Réduire les erreurs", "Faciliter l'évolution du programme", "Toutes les réponses"], "correct": 3}, {"num": 20, "text": "Une structure peut contenir une autre structure ?", "options": ["Oui", "Non", "Seulement en C++", "Seulement avec un pointeur"], "correct": 0}, {"num": 21, "text": "Dans le cours, Client contient une structure :", "options": ["Heure", "Adresse", "Date", "Socket"], "correct": 2}, {"num": 22, "text": "Pour accéder au jour :", "options": ["c.jour", "c.date.jour", "jour.c", "date(c)"], "correct": 1}, {"num": 23, "text": "typedef struct permet :", "options": ["D'éviter d'écrire struct", "D'accélérer le programme", "De créer un tableau", "De créer un pointeur"], "correct": 0}, {"num": 24, "text": "Avec typedef, on écrit :", "options": ["Client c;", "struct Client c;", "client();", "typedef c;"], "correct": 0}, {"num": 25, "text": "Pour copier une chaîne dans ip :", "options": ["c.ip=\"192...\";", "strcpy(c.ip,\"192...\");", "copy(c.ip);", "ip=c;"], "correct": 1}, {"num": 26, "text": "Pourquoi c.ip=\"...\" est faux ?", "options": ["Parce que ip est un tableau de caractères", "Parce que ip est un entier", "Parce que strcpy est interdit", "Parce que printf manque"], "correct": 0}, {"num": 27, "text": "strcpy appartient à :", "options": ["stdio.h", "string.h", "math.h", "stdlib.h"], "correct": 1}, {"num": 28, "text": "Le tableau de structures est déclaré :", "options": ["struct Client clients[3];", "Client(3);", "clients struct;", "Client[];"], "correct": 0}, {"num": 29, "text": "Chaque élément du tableau est :", "options": ["Une structure complète", "Une IP uniquement", "Un port uniquement", "Un entier"], "correct": 0}, {"num": 30, "text": "Pour accéder au port du deuxième client :", "options": ["clients[1].port", "clients.port[1]", "clients->port", "clients.port"], "correct": 0}, {"num": 31, "text": "Pour afficher tous les clients, on utilise généralement :", "options": ["while", "for", "goto", "switch"], "correct": 1}, {"num": 32, "text": "La fonction afficherClient() reçoit :", "options": ["Une copie de la structure", "Son adresse", "Un tableau", "Une chaîne"], "correct": 0}, {"num": 33, "text": "Ce mécanisme s'appelle :", "options": ["Passage par valeur", "Passage par référence", "Héritage", "Polymorphisme"], "correct": 0}, {"num": 34, "text": "Modifier c.port dans cette fonction :", "options": ["Modifie l'original", "Modifie seulement la copie", "Modifie tout le tableau", "Provoque une erreur"], "correct": 1}, {"num": 35, "text": "Le principal défaut du passage par valeur est :", "options": ["La copie de toute la structure", "La suppression des données", "L'impossibilité d'utiliser printf", "La compilation échoue"], "correct": 0}, {"num": 36, "text": "Plus une structure est grande :", "options": ["Plus la copie est coûteuse", "Plus elle est rapide", "Plus elle est légère", "Rien ne change"], "correct": 0}, {"num": 37, "text": "Le chapitre suivant introduit :", "options": ["Les fichiers", "Les pointeurs", "Les listes", "Les arbres"], "correct": 1}, {"num": 38, "text": "Avec un pointeur, l'accès aux champs se fait avec :", "options": [".", "->", "::", "#"], "correct": 1}, {"num": 39, "text": "c->port signifie :", "options": ["Le champ port de la structure pointée par c", "Le port de main", "Le prototype de c", "Une boucle"], "correct": 0}, {"num": 40, "text": "Pourquoi les pointeurs sont-ils préférés pour les grosses structures ?", "options": ["Ils évitent de copier toute la structure", "Ils changent automatiquement les données", "Ils remplacent les tableaux", "Ils suppriment les fonctions"], "correct": 0}, {"num": 41, "text": "Quelle fonction permet de connaître la taille d'une structure ?", "options": ["strlen()", "sizeof()", "size()", "length()"], "correct": 1}, {"num": 42, "text": "sizeof(struct Client) retourne :", "options": ["Le nombre de clients", "La taille en octets d'un Client", "La taille du tableau", "La taille d'une IP"], "correct": 1}, {"num": 43, "text": "Dans le cours, la taille approximative d'un Client est :", "options": ["8 octets", "16 octets", "24 octets", "64 octets"], "correct": 2}, {"num": 44, "text": "Le mot padding désigne :", "options": ["Une erreur de compilation", "Des octets ajoutés pour l'alignement mémoire", "Une variable globale", "Une fonction"], "correct": 1}, {"num": 45, "text": "Dans un tableau de structures :", "options": ["Les structures sont stockées de manière contiguë", "Les structures sont dispersées au hasard", "Seules les IP sont stockées", "Les ports sont dans un autre tableau"], "correct": 0}, {"num": 46, "text": "sizeof(clients) retourne :", "options": ["La taille d'un seul client", "La taille totale du tableau", "Le nombre de clients", "La taille d'une IP"], "correct": 1}, {"num": 47, "text": "Si un tableau contient 3 structures de 24 octets, sizeof(clients) vaut environ :", "options": ["24", "48", "72", "96"], "correct": 2}, {"num": 48, "text": "Dans une boucle for(int i=0;i<3;i++), clients[i] représente :", "options": ["Une structure complète", "Une IP uniquement", "Un entier", "Un pointeur"], "correct": 0}, {"num": 49, "text": "clients[i].ip représente :", "options": ["Le port", "L'adresse IP du client i", "Le tableau complet", "La date"], "correct": 1}, {"num": 50, "text": "clients[i].etat représente :", "options": ["L'IP", "Le port", "L'état du client", "La date"], "correct": 2}, {"num": 51, "text": "Pourquoi passe-t-on une structure à une fonction ?", "options": ["Pour l'afficher", "Pour la traiter", "Pour la modifier", "Toutes les réponses"], "correct": 3}, {"num": 52, "text": "Quand on passe une structure par valeur :", "options": ["Une copie est créée", "L'original est modifié", "Aucun objet n'est créé", "Le compilateur refuse"], "correct": 0}, {"num": 53, "text": "Après c.etat = 0; dans afficherClient(Client c) :", "options": ["Le client original devient inactif", "Seule la copie change", "Tous les clients changent", "Le tableau est supprimé"], "correct": 1}, {"num": 54, "text": "Pourquoi ce comportement est-il gênant ?", "options": ["Les modifications sont perdues", "Les structures disparaissent", "printf ne fonctionne plus", "Les tableaux deviennent impossibles"], "correct": 0}, {"num": 55, "text": "Pour modifier réellement une structure :", "options": ["Il faut utiliser un pointeur", "Il faut utiliser une boucle", "Il faut utiliser sizeof", "Il faut utiliser strcpy"], "correct": 0}, {"num": 56, "text": "Le passage par pointeur permet :", "options": ["D'éviter la copie", "De modifier l'original", "De gagner du temps", "Toutes les réponses"], "correct": 3}, {"num": 57, "text": "Dans le chapitre suivant, une fonction recevra :", "options": ["Client c", "Client *c", "int c", "char c"], "correct": 1}, {"num": 58, "text": "L'opérateur -> est utilisé avec :", "options": ["Une structure", "Un pointeur sur une structure", "Une chaîne", "Un tableau"], "correct": 1}, {"num": 59, "text": "Quelle écriture est correcte avec un pointeur ?", "options": ["c.port", "c->port", "port(c)", "port->c"], "correct": 1}, {"num": 60, "text": "Le pointeur contient :", "options": ["Une copie de la structure", "Son adresse mémoire", "Son port", "Son IP"], "correct": 1}, {"num": 61, "text": "Une adresse mémoire permet :", "options": ["D'accéder directement à l'objet", "De copier automatiquement l'objet", "De supprimer l'objet", "D'afficher le programme"], "correct": 0}, {"num": 62, "text": "Quel est l'intérêt principal des pointeurs ?", "options": ["Modifier directement l'objet", "Éviter les copies inutiles", "Économiser la mémoire", "Toutes les réponses"], "correct": 3}, {"num": 63, "text": "Pourquoi les pointeurs sont-ils considérés comme dangereux ?", "options": ["Ils permettent d'accéder directement à la mémoire", "Ils ralentissent le PC", "Ils empêchent les fonctions", "Ils remplacent les tableaux"], "correct": 0}, {"num": 64, "text": "Une structure peut contenir :", "options": ["Une autre structure", "Des tableaux", "Des entiers", "Toutes les réponses"], "correct": 3}, {"num": 65, "text": "Dans le cours, Date est :", "options": ["Une fonction", "Une structure", "Une boucle", "Une variable globale"], "correct": 1}, {"num": 66, "text": "Pour accéder au mois :", "options": ["c.date.mois", "c.mois", "mois(c)", "date->mois"], "correct": 0}, {"num": 67, "text": "Une structure améliore :", "options": ["L'organisation des données", "La lisibilité", "La maintenance", "Toutes les réponses"], "correct": 3}, {"num": 68, "text": "Le principal problème des tableaux parallèles est :", "options": ["La désynchronisation des données", "La lenteur de printf", "Le manque de mémoire", "Les pointeurs"], "correct": 0}, {"num": 69, "text": "Les structures permettent :", "options": ["De regrouper des données liées", "De créer des fichiers", "De remplacer les fonctions", "De remplacer les boucles"], "correct": 0}, {"num": 70, "text": "Le type Client représente :", "options": ["Une personne connectée", "Une boucle", "Une fonction", "Une bibliothèque"], "correct": 0}, {"num": 71, "text": "Une bonne structure doit :", "options": ["Regrouper des informations liées", "Contenir uniquement des entiers", "Contenir uniquement des chaînes", "Être vide"], "correct": 0}, {"num": 72, "text": "Quel chapitre suit celui des structures ?", "options": ["Les fichiers", "Les pointeurs", "Les listes", "Les arbres"], "correct": 1}, {"num": 73, "text": "Le passage par valeur :", "options": ["Copie la structure", "Passe son adresse", "Supprime la structure", "Modifie automatiquement l'original"], "correct": 0}, {"num": 74, "text": "Le passage par pointeur :", "options": ["Travaille directement sur l'original", "Copie la structure", "Est interdit en C", "Utilise strcpy"], "correct": 0}, {"num": 75, "text": "Le compilateur voit une structure comme :", "options": ["Un nouveau type", "Une boucle", "Une bibliothèque", "Une fonction"], "correct": 0}, {"num": 76, "text": "Le but principal du chapitre est :", "options": ["Remplacer les tableaux parallèles", "Supprimer les fonctions", "Éviter les boucles", "Supprimer les tableaux"], "correct": 0}, {"num": 77, "text": "Quelle affirmation est vraie ?", "options": ["Une structure peut contenir plusieurs types différents.", "Une structure ne contient que des entiers.", "Une structure ne peut pas contenir de tableau.", "Une structure ne peut pas être passée à une fonction."], "correct": 0}, {"num": 78, "text": "Laquelle de ces écritures est correcte ?", "options": ["clients[2].port", "clients.port[2]", "port.clients", "clients->2.port"], "correct": 0}, {"num": 79, "text": "L'objectif du chapitre 3 est de préparer :", "options": ["Les pointeurs", "Les boucles", "Les fichiers", "Les sockets"], "correct": 0}, {"num": 80, "text": "Le plus grand avantage des structures est :", "options": ["Elles regroupent des données cohérentes dans une seule entité.", "Elles remplacent les fonctions.", "Elles remplacent les tableaux.", "Elles rendent les pointeurs inutiles."], "correct": 0}]}];
 const LETTERS = ["A","B","C","D"];
-const LEVEL_SIZE = 20;
+const LEVEL_SIZE = 15;
 
 // Build levels: each chapter split into blocks of ~20 questions
 const CHAPTER_LEVELS = QUIZ_DATA.map((ch, ci) => {
